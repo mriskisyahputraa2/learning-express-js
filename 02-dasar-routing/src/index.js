@@ -3,55 +3,25 @@ import url from "url"; // import url untuk __dirname
 
 const app = express();
 const port = 3000;
-const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
 
-// membuat route url
 app.get("/", (req, res) => {
-  // res.send("Hello World");
-  // menampilkan json
-  //   res.json({
-  //     nama: "Rizki",
-  //     umur: "18 tahun",
-  //   });
-  console.log(__dirname);
-  res.sendFile("./page/index.html", { root: __dirname });
+  res.send("Hello, world!");
 });
 
-app.get("/about", (req, res) => {
-  res.sendFile("./page/about.html", { root: __dirname });
+app.get("/barangs", (req, res) => {
+  res.send("ini metode get barang");
 });
 
-app.get("/contact", (req, res) => {
-  res.sendFile("./page/contact.html", { root: __dirname });
+app.post("barangs", (req, res) => {
+  res.send("ini metode post barang");
 });
 
-// membuat route request params dan query berdasarkan id route
-app.get("/barang/:id/kategori/:nama", (req, res) => {
-  console.log(req.params.id);
-  console.log(req.params.nama);
-
-  // route menggunakan params id
-  const id = req.params.id;
-  const nama = req.params.nama;
-  // route menggunakan query id
-  const stok = req.query.stok_barang;
-  res.send(
-    "ini halaman barang dengan id: " +
-      id +
-      "<br>" +
-      "kategori barang: " +
-      nama +
-      "<br>" +
-      "stok barang:" +
-      stok
-  );
+app.put("barangs", (req, res) => {
+  res.send("ini metode put barang");
 });
 
-// membuat route url jika notfound
-app.use("*", (req, res) => {
-  res.status(404);
-  //   res.send("halaman tidak ditemukan");
-  res.sendFile("./page/404.html", { root: __dirname });
+app.delete("barangs", (req, res) => {
+  res.send("ini metode delete barang");
 });
 
 // menjalankan port
