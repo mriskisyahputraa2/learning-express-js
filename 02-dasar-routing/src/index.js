@@ -1,6 +1,5 @@
 import express from "express"; // import express
-import url from "url"; // import url untuk __dirname
-
+import router from "./routes/index.js";
 const app = express();
 const port = 3000;
 
@@ -35,30 +34,33 @@ app.get("/", (req, res) => {
 //   res.send("ab(cd)?e");
 // });
 
-app.get("/barangs", (req, res) => {
-  res.send("ini method get semua barang");
-});
+// app
+//   .route("/barangs")
+//   .get((req, res) => {
+//     res.send("ini method get semua barang");
+//   })
+//   .post((req, res) => {
+//     res.send("ini method post barang");
+//   });
 
-app.get("/barangs/:id", (req, res) => {
-  res.send("ini method get barang dengan id = " + req.params.id);
-});
+// app
+//   .route("/barangs/:id")
+//   .get((req, res) => {
+//     res.send("ini method get barang dengan id = " + req.params.id);
+//   })
+//   .put((req, res) => {
+//     res.send("ini method put barang dengan id = " + req.params.id);
+//   })
+//   .delete((req, res) => {
+//     res.send("ini method delete barang dengan id = " + req.params.id);
+//   });
 
-app.post("/barangs", (req, res) => {
-  res.send("ini method post barang");
-});
+// app.all("/barangs", (req, res) => {
+//   res.send("ini method all");
+// });
 
-app.put("/barangs/:id", (req, res) => {
-  res.send("ini method put barang dengan id = " + req.params.id);
-});
+app.use(router);
 
-app.delete("/barangs/:id", (req, res) => {
-  res.send("ini method delete barang dengan id = " + req.params.id);
-});
-
-// ini mencakup semua method routing
-app.all("/barangs", (req, res) => {
-  res.send("ini method all barang");
-});
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
@@ -66,34 +68,34 @@ app.listen(port, () => {
 // Route Handler
 
 // Route Handler callback 1 function
-app.get(
-  "/example/b",
-  (req, res, next) => {
-    console.log("the response will be sent by the next function ...");
-    next();
-  },
-  (req, res) => {
-    res.send("Hello from B!");
-  }
-);
+// app.get(
+//   "/example/b",
+//   (req, res, next) => {
+//     console.log("the response will be sent by the next function ...");
+//     next();
+//   },
+//   (req, res) => {
+//     res.send("Hello from B!");
+//   }
+// );
 
-// route handler kombinasi function dan array
-const cb0 = (req, res, next) => {
-  console.log("callback 0");
-  next();
-};
+// // route handler kombinasi function dan array
+// const cb0 = (req, res, next) => {
+//   console.log("callback 0");
+//   next();
+// };
 
-const cb1 = (req, res, next) => {
-  console.log("callback 1");
-  next();
-};
+// const cb1 = (req, res, next) => {
+//   console.log("callback 1");
+//   next();
+// };
 
-const cb2 = (req, res, next) => {
-  console.log("callback 2");
-  next();
-};
-// ini route kombinasi function dan array nya
-app.get("/callback/c", [cb0, cb1, cb2]);
+// const cb2 = (req, res, next) => {
+//   console.log("callback 2");
+//   next();
+// };
+// // ini route kombinasi function dan array nya
+// app.get("/callback/c", [cb0, cb1, cb2]);
 
 /*
  # Route Paths
