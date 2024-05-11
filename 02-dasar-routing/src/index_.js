@@ -8,6 +8,7 @@ app.get("/", (req, res) => {
   res.send("Hello, world!");
 });
 
+// mendapatkan
 app.get("/barangs", (req, res) => {
   res.send("ini method get barang");
 });
@@ -16,10 +17,12 @@ app.post("/barangs", (req, res) => {
   res.send("ini method post barang");
 });
 
+// meng-update
 app.put("/barangs", (req, res) => {
   res.send("ini method put barang");
 });
 
+// menghapus
 app.delete("/barangs", (req, res) => {
   res.send("ini method delete barang");
 });
