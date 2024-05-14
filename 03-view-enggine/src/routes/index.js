@@ -3,14 +3,19 @@ const router = express.Router();
 import barangRouter from "./barang.js";
 
 router.use("/", (req, res) => {
-  res.render("index");
+  const data = {
+    title: "HOME",
+  };
+
+  res.render("index", data);
 });
 
 router.use("/barangs", barangRouter);
 
-// router.all("/barangs", (req, res) => {
-//   res.send("all methods barang");
-// });
+router.all("/barangs", (req, res) => {
+  res.send("all methods barang");
+});
+
 router.use("*", (req, res) => {
   res.status(404);
   res.send("404 Not Found");
