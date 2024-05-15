@@ -40,4 +40,5 @@ app.listen(port, () => {
 /*
  1. Membuat route url
  2. Membuat route url notfound, untuk route ini diharuskan ditaruh paling bawah  dari semua route yang ada
+gitu aja
  */
