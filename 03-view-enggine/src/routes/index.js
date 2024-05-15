@@ -5,6 +5,20 @@ import barangRouter from "./barang.js";
 router.use("/", (req, res) => {
   const data = {
     title: "HOME",
+    data: [
+      {
+        id: 100,
+        nama: "Baju",
+      },
+      {
+        id: 200,
+        nama: "Celana",
+      },
+      {
+        id: 300,
+        nama: "sepatu",
+      },
+    ],
   };
 
   res.render("index", data);
