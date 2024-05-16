@@ -1,18 +1,20 @@
 {
-  "name": "05-middleware",
+  "name": "01-pengenalan",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./src/index.js",
   "scripts": {
+    "dev": "nodemon ./src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cookie-parser": "^1.4.6",
+    "ejs": "^3.1.10",
     "express": "^4.19.2",
-    "helmet": "^7.1.0"
+    "express-ejs-layouts": "^2.5.1",
+    "nodemon": "^3.1.0"
   },
   "type": "module"
 }

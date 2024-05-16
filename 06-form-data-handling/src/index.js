@@ -1,29 +1,25 @@
-// penggunaan middleware yang umumnya
-
-import express from "express";
-
+import express from "express"; // import express
 const app = express();
 const port = 3000;
 
-// middlaware untuk mencetak log
-app.use((req, res, next) => {
-  console.log("Halo brayy");
-  next();
-});
+import router from "./routes/index.js"; // import router
 
-// middlaware untuk menampilkan waktu pemintaan
-app.use((req, res, next) => {
-  req.requestTime = new Date();
-  next();
-});
+import expressEjsLayouts from "express-ejs-layouts"; // import expressEjsLayouts
+import path from "path"; // import path
+import url from "url"; // import url
+const __dirname = url.fileURLToPath(new URL(".", import.meta.url)); // deklarasi __dirname
 
-// menampilkan middlaware ke browser
-app.get("/", (req, res) => {
-  let responText = "Hello Middleware <br>";
-  responText += `Waktu permintaan: ${req.requestTime}`;
-  res.send(responText);
-});
+// meng-set path dari views
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "ejs");
+app.use(expressEjsLayouts);
+
+// digunakan untuk mengakses folder public yang tesimpan semua assets
+app.use("/static", express.static(path.join(__dirname, "../public")));
+
+app.use(router);
 
 app.listen(port, () => {
-  console.log("locahost running on port" + port);
+  console.log(`Example app listening on port ${port}`);
 });
+//
