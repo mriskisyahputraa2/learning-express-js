@@ -1,0 +1,33 @@
+<!-- table -->
+<h1>Daftar Barang</h1>
+
+<table border="1" cellpadding="10" cellspacing="0">
+  <tr>
+    <th>No</th>
+    <th>Kode</th>
+    <th>Nama</th>
+  </tr>
+  <!-- pengulangan foreach -->
+  <% data.forEach((row, no) => { %>
+  <tr>
+    <td><%= no +1 %></td>
+    <td><%= row.id %></td>
+    <td><%= row.nama %></td>
+
+    <% }) %>
+  </tr>
+</table>
+<!-- end table -->
+
+<!-- card -->
+<div>
+  <h2>Card</h2>
+  <div class="card">
+    <img src="static/img/img_avatar.jpg" alt="avatar" style="width: 100%" />
+    <div class="container">
+      <h4><b>Express JS</b></h4>
+      <p>Lorem ipsum dolor sit amet.</p>
+    </div>
+  </div>
+</div>
+<button onclick="show()">Show Message</button>
