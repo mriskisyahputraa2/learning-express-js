@@ -15,7 +15,7 @@ app.set("view engine", "ejs");
 app.use(expressEjsLayouts);
 
 // digunakan untuk mengakses folder public yang tesimpan semua assets
-app.use("/static", express.static(path.join(__dirname, "../public")));
+app.use(express.static(path.join(__dirname, "../public")));
 
 app.use(router);
 
