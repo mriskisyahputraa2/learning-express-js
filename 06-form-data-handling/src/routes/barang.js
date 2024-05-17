@@ -33,7 +33,13 @@ barangRouter
   .get((req, res) => {
     res.send("ini method get semua barang");
   })
-  .post((req, res) => {
+  // mendapatkan attacment yang di upload dari user berupa file, folder, dan gambar
+  .post(upload.single("attacment"), (req, res) => {
+    // mengakses file yang di upload
+    let file = req.file;
+    let body = req.body;
+    console.log(file);
+    console.log(body);
     res.send("ini method post barang");
   });
 
