@@ -1,0 +1,9 @@
+=======================MATERI===========================
+
+# FUNGSI dari urlencoded:
+   Fungsi urlencoded dari body-parser dalam konteks aplikasi Express.js digunakan untuk menguraikan data URL-encoded yang dikirim melalui permintaan HTTP. Data URL-encoded adalah format    standar yang digunakan ketika data dikirim dari formulir HTML menggunakan metode POST
+
+# FUNGSI dari extended
+   extended: true: Ketika disetel ke true, ini memungkinkan untuk menguraikan data URL-encoded menggunakan library qs, yang mendukung nested objects (objek bersarang). Ini memungkinkan penguraian data yang lebih kompleks.
+
+extended: false: Ketika disetel ke false, data URL-encoded akan diuraikan menggunakan library querystring, yang tidak mendukung nested objects dan hanya dapat menangani data yang lebih sederhana.
