@@ -42,3 +42,19 @@ app.get("/delete-cookies", (req, res) => {
 app.listen(port, () => {
   console.log("port listening on port " + port);
 });
+
+/* # COOKIES
+  1. secure: Memastikan browser hanya mengirim cookie melalui HTTPS
+  
+  2. httpOnly: Memastikan cookie hanya dikirim melalui HTTP(S), bukan
+  javascript: klien, sehingga membantu melindungi dari serangan skrip serangan(lintas situs)
+
+  3. domain: digunakan untuk membandingkan dengan domain server tempat
+  URL diminta. jika cocok, selanjutnya perikas atribut path. cotohnya: domain "localhost"
+
+  4. path: menunjukkan jalur cookie; gunakan untuk membandingkan 
+  dengan jalur permintaan. Jika ini dan domain cocok, maka 
+  kirimkan cookie dalam permintaan
+
+  5. expires: gunakan untuk menetapkan tanggal kedaluwarsa untuk cookie tetap.
+*/
