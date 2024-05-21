@@ -14,7 +14,7 @@ routes.get("/singup", (req, res) => {
     layout: "layout/main-layout",
     message: "",
   };
-  res.render(data);
+  res.render("singup", data);
 });
 
 export default routes;
