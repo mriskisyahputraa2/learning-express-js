@@ -1,8 +1,8 @@
 <div class="row center">
-  <div class="containter col-50">
+  <div class="container col-50">
     <p><%= message %></p>
     <h2 class="header">Register User</h2>
-    <form action="/singup" method="post" enctype="multipart/form-data">
+    <form action="/signup" method="post">
       <div class="row">
         <div class="col-25">
           <label for="nama">Nama Pengguna</label>
@@ -13,7 +13,7 @@
       </div>
       <div class="row">
         <div class="col-25">
-          <label for="email">Email</label>
+          <label for="email">Email Pengguna</label>
         </div>
         <div class="col-50">
           <input type="email" id="email" name="email" />
@@ -21,7 +21,7 @@
       </div>
       <div class="row">
         <div class="col-25">
-          <label for="password">Password</label>
+          <label for="password">Password Pengguna</label>
         </div>
         <div class="col-50">
           <input type="password" id="password" name="password" />

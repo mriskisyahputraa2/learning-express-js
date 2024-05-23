@@ -8,13 +8,40 @@ routes.get("/", (req, res) => {
   res.send("Hello brayy");
 });
 
-routes.get("/singup", (req, res) => {
+// routes menampilkan halaman signup
+routes.get("/signup", (req, res) => {
   const data = {
     title: "Sing Up",
     layout: "layout/main-layout",
     message: "",
   };
-  res.render("singup", data);
+  res.render("signup", data);
+});
+
+// ini belum ada penjelasan kode
+routes.post("/signup", (req, res) => {
+  //  jika permintaan request data tidak ada diisi yaitu berupa nama, email dan password
+  if (!req.body.nama || !req.body.email || !req.body.password) {
+    res.status(400); // maka tampilkan pesan error 400
+    const data = {
+      title: "Sign Up",
+      layout: "layout/main-layout",
+      message: "Invalid data",
+    };
+    res.render("signup", data);
+  } else {
+    Users.filter((user) => {
+      if (user.email === req.body.email) {
+        res.status(400);
+        const data = {
+          title: "Sign Up",
+          layout: "layout/main-layout",
+          message: "Email already exists",
+        };
+        res.render("signup", data);
+      }
+    });
+  }
 });
 
 export default routes;
