@@ -84,11 +84,20 @@ routes.post("/signup", (req, res) => {
     const data = {
       title: "Protected Page",
       layout: "layout/main-layout",
-      user: "Welcome" + req.session.user.nama,
+      message: "Welcome " + req.session.user.nama,
     };
 
     // akan merender halaman protected-page untuk pengguna baru dengan pesan "Welcome + nama pengguna"
     res.render("protected-page", data);
+  });
+
+  routes.get("/login", (req, res) => {
+    const data = {
+      title: "Login",
+      layout: "layout/main-layout",
+      message: "",
+    };
+    res.render("login", data);
   });
 
   // Middleware untuk Menangani Kesalahan pada Rute /protected-page, jika pengguna belum login
@@ -105,4 +114,14 @@ routes.post("/signup", (req, res) => {
   });
 });
 
+// menit 32.29
+
 export default routes;
+
+/* CATATAN
+
+ # routes.use: digunakan untuk penggunaan middleware
+ # Middleware adalah fungsi yang memiliki akses ke objek permintaan (req), objek respons (res), dan fungsi berikutnya dalam siklus permintaan/ respons (next).
+
+
+*/
