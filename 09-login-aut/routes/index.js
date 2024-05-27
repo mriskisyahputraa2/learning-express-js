@@ -67,8 +67,19 @@ routes.post("/signup", (req, res) => {
     res.redirect("/protected-page"); // mengalihkan pengguna ke halaman protected-page
   }
 
+  // fungsi ini middleware untuk memeriksa apakah pengguna telah login atau belum, pesan error ada di bawah
+  function issLoggedIn(req, res, next) {
+    // validasi, Memeriksa apakah objek user ada di sesi (req.session.user). Ini berarti pengguna telah login.
+    if (req.session.user) {
+      next(); // Jika pengguna telah login, middleware melanjutkan ke middleware atau rute berikutnya.
+    } else {
+      let err = new Error("Anda belum login!"); //Jika pengguna belum login, buat objek kesalahan (Error) dengan pesan "Anda belum login!"
+      next(err); // dan lanjutkan ke middleware berikutnya dengan melewatkan objek kesalahan tersebut (next(err)).
+    }
+  }
+
   // mengatur route get untuk protected-page
-  routes.get("/protected-page", (req, res) => {
+  routes.get("/protected-page", (req, res, next) => {
     // data object informasi untuk views protected-page
     const data = {
       title: "Protected Page",
@@ -76,7 +87,21 @@ routes.post("/signup", (req, res) => {
       user: "Welcome" + req.session.user.nama,
     };
 
+    // akan merender halaman protected-page untuk pengguna baru dengan pesan "Welcome + nama pengguna"
     res.render("protected-page", data);
+  });
+
+  // Middleware untuk Menangani Kesalahan pada Rute /protected-page, jika pengguna belum login
+  routes.use("/protected-page", (err, req, res, next) => {
+    // data object informasi untuk render ke halaman login
+    let data = {
+      title: "Halaman Login",
+      layout: "layout/main-layout",
+      message: err.message,
+    };
+
+    // merender halaman login dengan data object informasi yang sudah disiapkan
+    res.render("login", data);
   });
 });
 
