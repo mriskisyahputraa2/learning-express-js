@@ -175,6 +175,7 @@ routes.post("/signup", (req, res) => {
   });
 });
 
+//masih ada kesalahan
 export default routes;
 
 /* CATATAN
