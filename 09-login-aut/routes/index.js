@@ -91,13 +91,74 @@ routes.post("/signup", (req, res) => {
     res.render("protected-page", data);
   });
 
+  // route get untuk views login
   routes.get("/login", (req, res) => {
+    // data object informasi untuk views login
     const data = {
       title: "Login",
       layout: "layout/main-layout",
       message: "",
     };
+    // render halaman login dengan informasi dari object data
     res.render("login", data);
+  });
+
+  // route post untuk menangani login yang dilakukan oleh pengguna
+  routes.post("/login", (req, res) => {
+    // validasi, jika email atau password nya belum dimasukkan
+    if (!req.body.email || !req.body.password) {
+      res.status(400); // kembalikan status error 400
+
+      // data object informasi pesan kesalahan
+      const data = {
+        title: "Login",
+        layout: "layout/main-layout",
+        message: "Invalid email or password",
+      };
+
+      // merender login dan data object yang berisi pesan 'invalid email or passoword'
+      res.render("login", data);
+
+      // kalo tidak, validasi email dan password ada
+    } else {
+      // validasi, cek jika data array pengguna di Users masih kosong atau belum melakukan signup
+      if (Users.length === 0) {
+        res.redirect("/signup"); // maka, bawa pengguna kehalaman signup
+
+        // kalo pengguna sudah melakukan signup
+      } else {
+        // maka, melakukan filter pada array 'Users' untuk mencari user yang cocok dengan 'email' dan 'password' yang diberikan.
+        Users.filter((user) => {
+          // validasi, cek jika email dan password cocok
+          if (
+            user.email === req.body.email &&
+            user.password === req.body.password
+          ) {
+            req.session.user = user; // simpan data ke dalam session
+            res.redirect("/protected-page"); // dan bawa pengguna kehalaman protected-page(halaman utama)
+
+            // kalo tidak ada atau tidak cocok
+          } else {
+            res.status(400); // tampilkan status error 400
+
+            // data object untuk pesan kesalahan jika email dan password tidak cocok
+            const data = {
+              title: "Login",
+              layout: "layout/main-layout",
+              message: "Invalid Data",
+            };
+
+            // merender login dan data objectnya
+            res.render("login", data);
+          }
+        });
+      }
+    }
+  });
+
+  routes.get("/logout", (req, res) => {
+    req.session.destroy();
+    res.redirect("/login");
   });
 
   // Middleware untuk Menangani Kesalahan pada Rute /protected-page, jika pengguna belum login
@@ -113,8 +174,6 @@ routes.post("/signup", (req, res) => {
     res.render("login", data);
   });
 });
-
-// menit 32.29
 
 export default routes;
 
