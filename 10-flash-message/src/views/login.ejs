@@ -1,6 +1,20 @@
+<% if ( message.length > 0) { %>
+<script>
+  /* jika ada maka tampilkan pesannya yaitu:
+           message[0]: menampilkan icon popup itu adalah success atau error, disini saya menggunakan popup "error"
+           message[1]: menampilkan judul pesan = "Error !"
+           message[2]: menampilkan teks pesan = "Data tidak boleh kosong"
+      */
+  Swal.fire({
+    title: "<%= message[1] %>",
+    text: "<%= message[2] %>",
+    icon: "<%= message[0] %>",
+  });
+</script>
+<% } %>
+
 <div class="container center">
   <div class="content">
-    <p><%= message %></p>
     <h2 class="header">Login User</h2>
     <form action="/login" method="post">
       <div class="row">

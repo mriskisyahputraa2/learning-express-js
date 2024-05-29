@@ -25,13 +25,6 @@ routes.post("/signup", (req, res) => {
   if (!req.body.nama || !req.body.email || !req.body.password) {
     res.status(400); // maka tampilkan status 400
 
-    // data object informasi untuk views signup
-    // const data = {
-    //   title: "Sign Up",
-    //   layout: "layout/main-layout",
-    //   message: "Invalid data",
-    // };
-
     // message: adalah sebuah "key", ini yang akan digunakan jika ingin menggunakan sweet alert pesan kesalahan
     // "Error !", "Data tidak boleh kosong": Nilai dari pesan flash, adalah sebuah array yang berisi tiga elemen: tipe pesan ("error"), judul pesan ("Error !"), dan teks pesan ("Data tidak boleh kosong").
     req.flash("message", ["error", "Error !", "Data tidak boleh kosong"]);
@@ -45,15 +38,8 @@ routes.post("/signup", (req, res) => {
       if (user.email === req.body.email) {
         res.status(400); // tampilkan status 400
 
-        // data object informasi untuk views signup
-        const data = {
-          title: "Sign Up",
-          layout: "layout/main-layout",
-          message: "Email already exists",
-        };
-
-        // akan merender halaman signup dengan pesan "Email sudah ada"
-        res.render("signup", data);
+        req.flash("message", ["error", "Error !", "Email already exists"]);
+        res.redirect("/signup");
       }
     });
 
@@ -99,7 +85,7 @@ routes.post("/signup", (req, res) => {
     const data = {
       title: "Login",
       layout: "layout/main-layout",
-      message: "",
+      message: req.flash("message"),
     };
     // render halaman login dengan informasi dari object data
     res.render("login", data);
@@ -111,16 +97,8 @@ routes.post("/signup", (req, res) => {
     if (!req.body.email || !req.body.password) {
       res.status(400); // kembalikan status error 400
 
-      // data object informasi pesan kesalahan
-      const data = {
-        title: "Login",
-        layout: "layout/main-layout",
-        message: "Invalid email or password",
-      };
-
-      // merender login dan data object yang berisi pesan 'invalid email or passoword'
-      res.render("login", data);
-
+      req.flash("message", ["error", "Error !", "Data tidak boleh kosong!"]);
+      res.redirect("/login");
       // kalo tidak, validasi email dan password ada
     } else {
       // validasi, cek jika data array pengguna di Users masih kosong atau belum melakukan signup
@@ -144,14 +122,15 @@ routes.post("/signup", (req, res) => {
             res.status(400); // tampilkan status error 400
 
             // data object untuk pesan kesalahan jika email dan password tidak cocok
-            const data = {
-              title: "Login",
-              layout: "layout/main-layout",
-              message: "Invalid Data",
-            };
+
+            req.flash("message", [
+              "error",
+              "Error !",
+              "Email tidak terdaftar!",
+            ]);
 
             // merender login dan data objectnya
-            res.render("login", data);
+            res.redirect("login");
           }
         });
       }
@@ -166,15 +145,8 @@ routes.post("/signup", (req, res) => {
 
   // Middleware untuk Menangani Kesalahan pada Rute /protected-page, jika pengguna belum login
   routes.use("/protected-page", (err, req, res, next) => {
-    // data object informasi untuk render ke halaman login
-    let data = {
-      title: "Halaman Login",
-      layout: "layout/main-layout",
-      message: err.message,
-    };
-
-    // merender halaman login dengan data object informasi yang sudah disiapkan
-    res.render("login", data);
+    req.flash("message", ["error", "Error !", err.message]); // err.message ny adalah 'Anda belum login', ini didapatkan dari middleware fungsi issLoggedIn
+    res.redirect("/login");
   });
 });
 
