@@ -14,7 +14,7 @@ routes.get("/signup", (req, res) => {
   const data = {
     title: "Sing Up",
     layout: "layout/main-layout",
-    message: "",
+    message: req.flash("message"),
   };
   res.render("signup", data);
 });
@@ -26,14 +26,16 @@ routes.post("/signup", (req, res) => {
     res.status(400); // maka tampilkan status 400
 
     // data object informasi untuk views signup
-    const data = {
-      title: "Sign Up",
-      layout: "layout/main-layout",
-      message: "Invalid data",
-    };
+    // const data = {
+    //   title: "Sign Up",
+    //   layout: "layout/main-layout",
+    //   message: "Invalid data",
+    // };
 
-    // akan merender halaman signup dengan pesan kesalahan "invalid data"
-    res.render("signup", data);
+    // message: adalah sebuah "key", ini yang akan digunakan jika ingin menggunakan sweet alert pesan kesalahan
+    // "Error !", "Data tidak boleh kosong": Nilai dari pesan flash, adalah sebuah array yang berisi tiga elemen: tipe pesan ("error"), judul pesan ("Error !"), dan teks pesan ("Data tidak boleh kosong").
+    req.flash("message", ["error", "Error !", "Data tidak boleh kosong"]);
+    res.redirect("/signup"); // mengembalikan ke halaman signup
 
     // kalau tidak ada, memeriksa duplikasi email
   } else {

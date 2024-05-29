@@ -1,6 +1,25 @@
+<!-- validasi, apakah variabel message ada dan memiliki panjang lebih dari 0?
+
+- message: Variabel ini diambil dari req.flash("message") dan akan berisi array dengan informasi pesan.
+- message.length > 0: Memastikan bahwa array message tidak kosong.
+-->
+<% if (message && message.length > 0) { %>
+<!-- jika ada maka tampilkan pesannya yaitu:
+       message[0]: menampilkan icon popup itu adalah success atau error, disini saya menggunakan popup "error"
+       message[1]: menampilkan judul pesan = "Error !"
+       message[2]: menampilkan teks pesan = "Data tidak boleh kosong"
+  -->
+<script>
+  Swal.fire({
+    title: "<%= message[1] %>",
+    text: "<%= message[2] %>",
+    icon: "<%= message[0] %>",
+  });
+</script>
+<% } %>
+
 <div class="container center">
   <div class="content">
-    <p><%= message %></p>
     <h2 class="header">Register User</h2>
     <form action="/signup" method="post">
       <div class="row">

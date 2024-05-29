@@ -9,6 +9,7 @@ import multer from "multer"; // Untuk menangani form data, khususnya file upload
 import cookieParser from "cookie-parser"; // Untuk mem-parsing cookie
 import session from "express-session"; // Untuk mengelola session
 import expressEjsLayouts from "express-ejs-layouts"; // Untuk mengelola layout EJS
+import flash from "express-flash"; // Untuk message kesalahan / error
 
 import path from "path"; // Untuk mengelola path file dan direktori
 import url from "url"; // Untuk mengelola URL
@@ -35,7 +36,8 @@ app.use(
   })
 );
 
-app.use(routes); // menggunakan routes nya
+app.use(flash()); // menggunakan route middleware nya
+app.use(routes); // menggunakan routes middleware nya
 
 app.listen(port, () => {
   console.log("port is " + port);
