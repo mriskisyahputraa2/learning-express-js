@@ -1,0 +1,4 @@
+1. disini ada tambahan menginstall npm untuk menampilkan pesan kesalahan atau error yaitu install: "npm i express-flash"
+2. install mongoose digunakan untuk koneksi ke database mongodb yaitu install: "npm i mongoose"
+3. bcrypt digunakan untuk meng-ekripsi password kita agar tidak bisa dilihat secara langsung akan membuat password menjadi acak. install: "npm i bcrypt" 
+4. dotenv digunakan untuk menyimpan kredensial env kita dengan cara install: "npm i dotenv"
