@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // Mengaktifkan parsing URL-
 app.use(upload.array()); // Mengaktifkan upload file dengan Multer.
 app.use(cookieParser()); //  Mengaktifkan parsing cookie.
 
-// konfigurasi middlaware session
+// konfigurasi untuk middlaware session
 app.use(
   session({
     secret: "secret key",

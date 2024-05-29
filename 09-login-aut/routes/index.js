@@ -19,7 +19,7 @@ routes.get("/signup", (req, res) => {
   res.render("signup", data);
 });
 
-// routes signup
+// routes validasi signup
 routes.post("/signup", (req, res) => {
   // validasi, jika request body nama, email dan password belum ada
   if (!req.body.nama || !req.body.email || !req.body.password) {
@@ -78,8 +78,8 @@ routes.post("/signup", (req, res) => {
     }
   }
 
-  // mengatur route get untuk protected-page
-  routes.get("/protected-page", (req, res, next) => {
+  // mengatur route get untuk protected-page dengan middleware issLoggedIn sebagai middleware pertama
+  routes.get("/protected-page", issLoggedIn, (req, res, next) => {
     // data object informasi untuk views protected-page
     const data = {
       title: "Protected Page",
@@ -156,9 +156,10 @@ routes.post("/signup", (req, res) => {
     }
   });
 
+  // route get logout
   routes.get("/logout", (req, res) => {
-    req.session.destroy();
-    res.redirect("/login");
+    req.session.destroy(); // menghapus session dari login
+    res.redirect("/login"); // kembali kehalaman login
   });
 
   // Middleware untuk Menangani Kesalahan pada Rute /protected-page, jika pengguna belum login
