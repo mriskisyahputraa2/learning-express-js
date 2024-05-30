@@ -1,3 +1,24 @@
+// import mongoose from "../utils/db.js";
+
+// const logInSchema = new mongoose.Schema({
+//   nama: {
+//     type: String,
+//     required: true,
+//   },
+//   email: {
+//     type: String,
+//     required: true,
+//   },
+//   password: {
+//     type: String,
+//     required: true,
+//   },
+// });
+
+// const logInCollection = mongoose.model("Users", logInSchema);
+
+// export default logInCollection;
+
 import mongoose from "../utils/db.js"; // Mengimpor Mongoose yang telah terhubung ke MongoDB dari file db.js yang terletak di direktori utils.
 
 // mendefinisikan skema mongoose, untuk struktur data pengguna yang akan disimpan dalam database.
