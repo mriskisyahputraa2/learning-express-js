@@ -1,5 +1,6 @@
 import express, { Router } from "express";
 import logInCollection from "../src/models/users.js";
+import e from "express";
 const routes = express.Router(); // definisi routes express router
 
 let Users = []; // array ini digunakan untuk menyimpan data pengguna
@@ -94,48 +95,30 @@ routes.post("/signup", async (req, res) => {
     res.render("login", data);
   });
 
-  // route post untuk menangani login yang dilakukan oleh pengguna
-  routes.post("/login", (req, res) => {
-    // validasi, jika email atau password nya belum dimasukkan
+  routes.post("/login", async (req, res) => {
     if (!req.body.email || !req.body.password) {
-      res.status(400); // kembalikan status error 400
+      res.status(400);
 
       req.flash("message", ["error", "Error !", "Data tidak boleh kosong!"]);
       res.redirect("/login");
-      // kalo tidak, validasi email dan password ada
     } else {
-      // validasi, cek jika data array pengguna di Users masih kosong atau belum melakukan signup
-      if (Users.length === 0) {
-        res.redirect("/signup"); // maka, bawa pengguna kehalaman signup
-
-        // kalo pengguna sudah melakukan signup
+      const checking = await logInCollection.findOne({ email: req.body.email });
+      if (checking) {
+        if (checking.password === req.body.password) {
+          req.session.user = {
+            nama: checking.nama,
+            email: checking.email,
+          };
+          res.redirect("/protected-page");
+        } else {
+          res.status(400);
+          req.flash("message", ["error", "Error !", "Password anda salah!"]);
+          res.redirect("login");
+        }
       } else {
-        // maka, melakukan filter pada array 'Users' untuk mencari user yang cocok dengan 'email' dan 'password' yang diberikan.
-        Users.filter((user) => {
-          // validasi, cek jika email dan password cocok
-          if (
-            user.email === req.body.email &&
-            user.password === req.body.password
-          ) {
-            req.session.user = user; // simpan data ke dalam session
-            res.redirect("/protected-page"); // dan bawa pengguna kehalaman protected-page(halaman utama)
-
-            // kalo tidak ada atau tidak cocok
-          } else {
-            res.status(400); // tampilkan status error 400
-
-            // data object untuk pesan kesalahan jika email dan password tidak cocok
-
-            req.flash("message", [
-              "error",
-              "Error !",
-              "Email tidak terdaftar!",
-            ]);
-
-            // merender login dan data objectnya
-            res.redirect("login");
-          }
-        });
+        res.status(400);
+        req.flash("message", ["error", "Error !", "Email tidak terdaftar!"]);
+        res.redirect("/login");
       }
     }
   });
@@ -153,7 +136,6 @@ routes.post("/signup", async (req, res) => {
   });
 });
 
-//menit 11.30
 export default routes;
 
 /* CATATAN
