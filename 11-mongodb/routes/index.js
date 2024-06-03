@@ -1,9 +1,9 @@
 import express, { Router } from "express";
 import logInCollection from "../src/models/users.js";
 import e from "express";
+import { encript } from "../src/utils/bcrypt.js";
+import { compare } from "bcrypt";
 const routes = express.Router(); // definisi routes express router
-
-let Users = []; // array ini digunakan untuk menyimpan data pengguna
 
 // routes
 routes.get("/", (req, res) => {
@@ -51,7 +51,7 @@ routes.post("/signup", async (req, res) => {
       const newUser = {
         nama: req.body.nama,
         email: req.body.email,
-        password: req.body.password,
+        password: await encript(req.body.password), // dan buat password menjadi encript yaitu password acak
       };
 
       // simpan user ke dalam database
@@ -99,7 +99,7 @@ routes.post("/signup", async (req, res) => {
       message: req.flash("message"),
     };
     // render halaman login dengan informasi dari object data
-    res.render("/login", data);
+    res.render("login", data);
   });
 
   // routes post mendapatkan validasi login menggunakan async: untuk menyimpan data pengguna ke database
@@ -119,8 +119,8 @@ routes.post("/signup", async (req, res) => {
 
       // validasi, cek jika email ada di database
       if (checking) {
-        // validasi, apakah password nya cocok
-        if (checking.password === req.body.password) {
+        // validasi, apakah password yang dimasukkan oleh pengguna sesuai dengan yang disimpan dalam database sama, menggunakan fungsi compare
+        if (await compare(req.body.password, checking.password)) {
           // Jika cocok, simpan informasi user ke session dan redirect ke halaman protected
           req.session.user = {
             nama: checking.nama,
@@ -132,7 +132,7 @@ routes.post("/signup", async (req, res) => {
         } else {
           res.status(400); // kirim status 400(error)
           req.flash("message", ["error", "Error !", "Password anda salah!"]); // dan pesan kesalahan "Password ada salah!"
-          res.redirect("login"); // bawa user ke halaman login, untuk login dulu
+          res.redirect("/login"); // bawa user ke halaman login, untuk login dulu
         }
 
         // kalo email tidak cocok
