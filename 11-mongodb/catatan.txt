@@ -2,3 +2,7 @@
 2. install mongoose digunakan untuk koneksi ke database mongodb yaitu install: "npm i mongoose"
 3. bcrypt digunakan untuk meng-ekripsi password kita agar tidak bisa dilihat secara langsung akan membuat password menjadi acak. install: "npm i bcrypt" 
 4. dotenv digunakan untuk menyimpan kredensial env kita dengan cara install: "npm i dotenv"
+
+
+
+"async": digunakan untuk mendefinisikan fungsi asynchronous dalam JavaScript. Fungsi asynchronous memungkinkan Anda untuk menulis kode yang melakukan operasi yang mungkin memakan waktu lama, seperti permintaan jaringan (network request), operasi file, atau panggilan ke database, tanpa menghalangi eksekusi kode lainnya.

@@ -21,36 +21,43 @@ routes.get("/signup", (req, res) => {
   res.render("signup", data);
 });
 
-// routes validasi signup
+// routes mendapatkan validasi signup menggunakan async: untuk menyimpan data pengguna ke database
 routes.post("/signup", async (req, res) => {
-  // validasi, jika request body nama, email dan password belum ada
+  // validasi, apakah request body nama, email dan password sudah ada? belum
   if (!req.body.nama || !req.body.email || !req.body.password) {
-    res.status(400); // maka tampilkan status 400
+    res.status(400); // status 400(error)
 
     // message: adalah sebuah "key", ini yang akan digunakan jika ingin menggunakan sweet alert pesan kesalahan
     // "Error !", "Data tidak boleh kosong": Nilai dari pesan flash, adalah sebuah array yang berisi tiga elemen: tipe pesan ("error"), judul pesan ("Error !"), dan teks pesan ("Data tidak boleh kosong").
     req.flash("message", ["error", "Error !", "Data tidak boleh kosong"]);
     res.redirect("/signup"); // mengembalikan ke halaman signup
 
-    // kalau tidak ada, memeriksa duplikasi email
+    // kalau data nama, email dan password ada
   } else {
+    // periksa apakah email sudah terdaftar
     const checking = await logInCollection.findOne({ email: req.body.email });
 
+    //validasi, cek apakah email sudah terdaftar? sudah
     if (checking) {
       res.status(400); // tampilkan status 400
 
+      // tampilkan message "Email sudah ada!"
       req.flash("message", ["error", "Error !", "Email sudah ada!"]);
-      res.redirect("/signup");
+      res.redirect("/signup"); // kembalikan user ke halaman signup
+
+      // kalo email nya belum terdaftar
     } else {
-      // jika email tidak ditemukan duplikasinya, maka tambahkan pengguna baru
+      // jika email belum terdaftar, buat user baru dengan nama, email dan password
       const newUser = {
         nama: req.body.nama,
         email: req.body.email,
         password: req.body.password,
       };
 
+      // simpan user ke dalam database
       await logInCollection.insertMany([newUser]);
 
+      // simpan informasi nama dan password ke session agar bisa nanti di loginkan
       req.session.user = {
         nama: newUser.nama,
         password: newUser.password,
@@ -61,7 +68,7 @@ routes.post("/signup", async (req, res) => {
 
   // fungsi ini middleware untuk memeriksa apakah pengguna telah login atau belum, pesan error ada di bawah
   function issLoggedIn(req, res, next) {
-    // validasi, Memeriksa apakah objek user ada di sesi (req.session.user). Ini berarti pengguna telah login.
+    // validasi, periksa apakah user sudah login dengan melihat apakah ada user di session
     if (req.session.user) {
       next(); // Jika pengguna telah login, middleware melanjutkan ke middleware atau rute berikutnya.
     } else {
@@ -70,7 +77,7 @@ routes.post("/signup", async (req, res) => {
     }
   }
 
-  // mengatur route get untuk protected-page dengan middleware issLoggedIn sebagai middleware pertama
+  // mengatur route get, untuk protected-page dengan middleware issLoggedIn sebagai middleware pertama
   routes.get("/protected-page", issLoggedIn, (req, res, next) => {
     // data object informasi untuk views protected-page
     const data = {
@@ -92,33 +99,47 @@ routes.post("/signup", async (req, res) => {
       message: req.flash("message"),
     };
     // render halaman login dengan informasi dari object data
-    res.render("login", data);
+    res.render("/login", data);
   });
 
+  // routes post mendapatkan validasi login menggunakan async: untuk menyimpan data pengguna ke database
   routes.post("/login", async (req, res) => {
+    // validasi, cek apakah email atau password sudah ada atau belum? belum
     if (!req.body.email || !req.body.password) {
-      res.status(400);
+      res.status(400); // kirim status 400(error)
 
+      // tampilkan pesan error "data tidak boleh kosong"
       req.flash("message", ["error", "Error !", "Data tidak boleh kosong!"]);
-      res.redirect("/login");
+      res.redirect("/login"); // kembalikan user kehalaman login
+
+      // kalo data email atau password sudah ada
     } else {
+      // cari apakah email ada di database
       const checking = await logInCollection.findOne({ email: req.body.email });
+
+      // validasi, cek jika email ada di database
       if (checking) {
+        // validasi, apakah password nya cocok
         if (checking.password === req.body.password) {
+          // Jika cocok, simpan informasi user ke session dan redirect ke halaman protected
           req.session.user = {
             nama: checking.nama,
             email: checking.email,
           };
-          res.redirect("/protected-page");
+          res.redirect("/protected-page"); // bawa user kehalaman protected
+
+          // kalo password tidak cocok
         } else {
-          res.status(400);
-          req.flash("message", ["error", "Error !", "Password anda salah!"]);
-          res.redirect("login");
+          res.status(400); // kirim status 400(error)
+          req.flash("message", ["error", "Error !", "Password anda salah!"]); // dan pesan kesalahan "Password ada salah!"
+          res.redirect("login"); // bawa user ke halaman login, untuk login dulu
         }
+
+        // kalo email tidak cocok
       } else {
-        res.status(400);
-        req.flash("message", ["error", "Error !", "Email tidak terdaftar!"]);
-        res.redirect("/login");
+        res.status(400); // kirim status 400(error)
+        req.flash("message", ["error", "Error !", "Email tidak terdaftar!"]); // dan pesan kesalahan "Email tidak terdaftar!"
+        res.redirect("/login"); // bawa user ke halaman login, untuk login dulu
       }
     }
   });
