@@ -3,6 +3,7 @@ import logInCollection from "../src/models/users.js";
 import e from "express";
 import { encript } from "../src/utils/bcrypt.js";
 import { compare } from "bcrypt";
+import regValid from "../src/validation/register.js";
 const routes = express.Router(); // definisi routes express router
 
 // routes
@@ -23,19 +24,20 @@ routes.get("/signup", (req, res) => {
 
 // routes mendapatkan validasi signup menggunakan async: untuk menyimpan data pengguna ke database
 routes.post("/signup", async (req, res) => {
-  // validasi, apakah request body nama, email dan password sudah ada? belum
-  if (!req.body.nama || !req.body.email || !req.body.password) {
+  const hasil = await regValid(req.body);
+
+  if (hasil.message.length > 0) {
     res.status(400); // status 400(error)
 
     // message: adalah sebuah "key", ini yang akan digunakan jika ingin menggunakan sweet alert pesan kesalahan
     // "Error !", "Data tidak boleh kosong": Nilai dari pesan flash, adalah sebuah array yang berisi tiga elemen: tipe pesan ("error"), judul pesan ("Error !"), dan teks pesan ("Data tidak boleh kosong").
-    req.flash("message", ["error", "Error !", "Data tidak boleh kosong"]);
+    req.flash("message", ["error", "Error !", hasil.message[0]]);
     res.redirect("/signup"); // mengembalikan ke halaman signup
 
     // kalau data nama, email dan password ada
   } else {
     // periksa apakah email sudah terdaftar
-    const checking = await logInCollection.findOne({ email: req.body.email });
+    const checking = await logInCollection.findOne({ email: hasil.data.email });
 
     //validasi, cek apakah email sudah terdaftar? sudah
     if (checking) {
@@ -49,9 +51,9 @@ routes.post("/signup", async (req, res) => {
     } else {
       // jika email belum terdaftar, buat user baru dengan nama, email dan password
       const newUser = {
-        nama: req.body.nama,
-        email: req.body.email,
-        password: await encript(req.body.password), // dan buat password menjadi encript yaitu password acak
+        nama: hasil.data.nama,
+        email: hasil.data.email,
+        password: await encript(hasil.data.password), // dan buat password menjadi encript yaitu password acak
       };
 
       // simpan user ke dalam database
