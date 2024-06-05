@@ -16,7 +16,8 @@
     icon: "<%= message[0] %>",
   });
 </script>
-<% } %>
+<% } let nama = ""; let email = ""; let password = ""; if(data) { nama =
+data.nama; email = data.email; password = data.password; } %>
 
 <div class="container center">
   <div class="content">
@@ -27,7 +28,7 @@
           <label for="nama">Nama Pengguna</label>
         </div>
         <div class="col-75">
-          <input type="text" id="nama" name="nama" />
+          <input type="text" id="nama" name="nama" value="<%= nama%>" />
         </div>
       </div>
       <div class="row">
@@ -35,7 +36,7 @@
           <label for="email">Email</label>
         </div>
         <div class="col-75">
-          <input type="email" id="email" name="email" />
+          <input type="email" id="email" name="email" value="<%= email%>" />
         </div>
       </div>
       <div class="row">
@@ -43,7 +44,12 @@
           <label for="password">Password</label>
         </div>
         <div class="col-75">
-          <input type="password" id="password" name="password" />
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value="<%= password %>"
+          />
         </div>
       </div>
       <div class="row">

@@ -33,7 +33,7 @@ const regValid = (dt) => {
   }
 
   // validasi, jika data 'password' kosong maka tampilkan pesan errornya
-  if (!validator.isEmpty(data.password)) {
+  if (validator.isEmpty(data.password)) {
     message.push("Password tidak boleh kosong!");
   }
 
@@ -49,5 +49,3 @@ const regValid = (dt) => {
 };
 
 export default regValid;
-
-// menit 11

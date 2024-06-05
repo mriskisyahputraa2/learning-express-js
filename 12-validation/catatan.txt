@@ -5,4 +5,17 @@
 5. validator digunakan untuk memeriksa input pengguna di aplikasi web. Validasi ini mencakup berbagai jenis pemeriksaan seperti validasi email, URL, angka, dan lainnya. npm i validator
 
 
-"async": digunakan untuk mendefinisikan fungsi asynchronous dalam JavaScript. Fungsi asynchronous memungkinkan Anda untuk menulis kode yang melakukan operasi yang mungkin memakan waktu lama, seperti permintaan jaringan (network request), operasi file, atau panggilan ke database, tanpa menghalangi eksekusi kode lainnya.
+# "async": digunakan untuk mendefinisikan fungsi asynchronous dalam JavaScript. Fungsi asynchronous memungkinkan Anda untuk menulis kode yang melakukan operasi yang mungkin memakan waktu lama, seperti permintaan jaringan (network request), operasi file, atau panggilan ke database, tanpa menghalangi eksekusi kode lainnya.
+
+
+# secret: "secret key":
+    secret adalah string yang digunakan untuk menandatangani dan mengenkripsi ID sesi di cookie. Ini adalah kunci keamanan yang penting dan harus disimpan dengan aman.
+    "secret key" dalam contoh ini adalah placeholder; dalam aplikasi nyata, ini harus berupa string yang kompleks dan sulit ditebak.
+    resave: false:
+
+    resave menentukan apakah sesi harus disimpan kembali ke store sesi, bahkan jika sesi tidak dimodifikasi selama request.
+    Jika false, sesi hanya akan disimpan jika sesi tersebut telah dimodifikasi. Ini dapat mengurangi beban kerja pada store sesi.
+    saveUninitialized: false:
+
+    saveUninitialized menentukan apakah sesi yang baru, tetapi belum dimodifikasi, harus disimpan ke store sesi.
+    Jika false, sesi yang baru dibuat tidak akan disimpan sampai sesi tersebut benar-benar diubah. Ini berguna untuk mematuhi hukum privasi seperti GDPR yang mewajibkan persetujuan pengguna sebelum menyimpan data yang dapat diidentifikasi.
