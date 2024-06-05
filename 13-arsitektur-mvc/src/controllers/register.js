@@ -1,6 +1,6 @@
-import logInCollection from "../models/users";
-import regValid from "../validation/register";
-import { compare, encript } from "../src/utils/bcrypt.js";
+import regValid from "../validation/register.js";
+import { compare, encript } from "../utils/bcrypt.js";
+import logInCollection from "../models/users.js";
 
 // mengambil/menampilkan tampilan signup
 const getSignup = (req, res) => {
