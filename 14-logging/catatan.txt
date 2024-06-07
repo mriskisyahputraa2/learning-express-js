@@ -11,6 +11,11 @@
 6. Winston digunakan untuk mencatat aktivitas aplikasi, error, dan informasi lainnya dengan cara yang fleksibel dan dapat dikonfigurasi. Winston memungkinkan pengembang untuk mengelola berbagai level log (seperti error, warn, info, dan debug), serta mengirim log ke berbagai tujuan seperti konsol, file, atau layanan logging eksternal. cara install yaitu: "npm i winston" 
 
 7. winston-daily-rotate-file adalah transportasi untuk Winston yang memungkinkan rotasi log harian, menyimpan log dalam file baru setiap hari untuk mempermudah pengelolaan, pengarsipan, dan pencarian log berdasarkan tanggal. cara install yaitu: "npm i winston-daily-rotate-file"
+
+8. winston-mongodb  memungkinkan penyimpanan log langsung ke MongoDB. Ini mempermudah integrasi logging antara Winston dan MongoDB, memungkinkan pengelolaan log aplikasi secara efisien dengan pencarian, pengarsipan, dan analisis yang lebih baik menggunakan kemampuan kueri MongoDB. cara install yaitu: "npm i winston-mongodb"
+
+9. mongobd dibutuhkan untuk driver ke winston-mongodb cara install yaitu: "npm i mongodb"
+
 # Agenda
     - Pengenalan Logging
     - Membuat Log sederhana dengan console

@@ -1,7 +1,35 @@
 import winston from "winston";
 import "winston-daily-rotate-file";
+import "winston-mongodb";
+import TransportStream from "winston-transport";
 
-// menit 26
+// keneksi ke database mongodb
+import mongodb, { MongoClient } from "mongodb";
+const mongoClient = mongodb.MongoClient;
+const url = "mongodb://127.0.0.1:27017/latihan";
+const client = new MongoClient(url);
+await client.connect();
+
+class MyClass extends TransportStream {
+  constructor(options) {
+    super(options);
+  }
+
+  // custom disini sesuai kebutuhan email, WA, ....
+  log(info, next) {
+    console.log(`${new Date()} ${info.level} ${info.message}`);
+    next();
+  }
+}
+
+const transportsDailyRotateFile = new winston.transports.DailyRotateFile({
+  level: "silly",
+  filename: "./logs/app-%DATE%.log",
+  datePattern: "YYYY-MM-DD-HH",
+  zippedArchive: true,
+  maxSize: "1m",
+  maxFiles: "14d",
+});
 
 const logger = winston.createLogger({
   level: "silly",
@@ -17,17 +45,31 @@ const logger = winston.createLogger({
     )
   ),
   transports: [
-    new winston.transports.Console({
+    // new winston.transports.Console({
+    //   level: "silly",
+    //   format: winston.format.combine(winston.format.colorize({ all: true })),
+    // }),
+    new winston.transports.File({
+      handleExceptions: true,
+      level: "silly",
+      filename: "./logs/app.log",
+    }),
+    new winston.transports.File({
+      handleExceptions: true,
+      level: "error",
+      filename: "./logs/app-error.log",
+    }),
+    transportsDailyRotateFile,
+    // new winston.transports.MongoDB({
+    //   level: "error",
+    //   db: await Promise.resolve(client),
+    //   collection: "logs",
+    //   capped: true,
+    // }),
+
+    new MyClass({
       level: "silly",
       format: winston.format.combine(winston.format.colorize({ all: true })),
-    }),
-    new winston.transports.File({
-      level: "silly",
-      filename: "./log/app.log",
-    }),
-    new winston.transports.File({
-      level: "error",
-      filename: "./log/app-error.log",
     }),
   ],
 });

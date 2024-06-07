@@ -14,7 +14,7 @@ app.set("view engine", "ejs"); // Mengatur EJS sebagai template engine.
 
 app.use(appMiddleware); // menggunakan segala macam middleware
 app.use(routes); // menggunakan routes middleware nya
-
+run();
 app.listen(port, () => {
   console.log("port is " + port);
 });
