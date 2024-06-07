@@ -1,4 +1,7 @@
 import winston from "winston";
+import "winston-daily-rotate-file";
+
+// menit 26
 
 const logger = winston.createLogger({
   level: "silly",
@@ -19,7 +22,12 @@ const logger = winston.createLogger({
       format: winston.format.combine(winston.format.colorize({ all: true })),
     }),
     new winston.transports.File({
+      level: "silly",
       filename: "./log/app.log",
+    }),
+    new winston.transports.File({
+      level: "error",
+      filename: "./log/app-error.log",
     }),
   ],
 });

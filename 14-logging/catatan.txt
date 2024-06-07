@@ -1,9 +1,16 @@
 1. install npm express flash untuk menampilkan pesan kesalahan atau error yaitu install: "npm i express-flash"
+
 2. install mongoose digunakan untuk koneksi ke database mongodb yaitu install: "npm i mongoose"
+
 3. bcrypt digunakan untuk meng-ekripsi password kita agar tidak bisa dilihat secara langsung akan membuat password menjadi acak. install: "npm i bcrypt" 
+
 4. dotenv digunakan untuk menyimpan kredensial env kita dengan cara install: "npm i dotenv"
+
 5. validator digunakan untuk memeriksa input pengguna di aplikasi web. Validasi ini mencakup berbagai jenis pemeriksaan seperti validasi email, URL, angka, dan lainnya. npm i validator
 
+6. Winston digunakan untuk mencatat aktivitas aplikasi, error, dan informasi lainnya dengan cara yang fleksibel dan dapat dikonfigurasi. Winston memungkinkan pengembang untuk mengelola berbagai level log (seperti error, warn, info, dan debug), serta mengirim log ke berbagai tujuan seperti konsol, file, atau layanan logging eksternal. cara install yaitu: "npm i winston" 
+
+7. winston-daily-rotate-file adalah transportasi untuk Winston yang memungkinkan rotasi log harian, menyimpan log dalam file baru setiap hari untuk mempermudah pengelolaan, pengarsipan, dan pencarian log berdasarkan tanggal. cara install yaitu: "npm i winston-daily-rotate-file"
 # Agenda
     - Pengenalan Logging
     - Membuat Log sederhana dengan console
