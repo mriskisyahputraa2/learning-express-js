@@ -1,0 +1,7 @@
+[LOGGER], 2024-06-07 11:36:57.232 AM, error : Ini adalah Error
+[LOGGER], 2024-06-07 11:36:57.236 AM, warn : Ini adalah Warn
+[LOGGER], 2024-06-07 11:36:57.237 AM, info : Ini adalah Info
+[LOGGER], 2024-06-07 11:36:57.237 AM, http : ini adalah http
+[LOGGER], 2024-06-07 11:36:57.237 AM, verbose : Ini adalah verbose
+[LOGGER], 2024-06-07 11:36:57.238 AM, debug : Ini adalah debug
+[LOGGER], 2024-06-07 11:36:57.238 AM, silly : Ini adalah silly
