@@ -35107,3 +35107,192 @@
 ReferenceError: run is not defined
     at file:///E:/LEARNING%20-%20EXPRESSJS/14-logging/src/index.js:17:1
     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[LOGGER], 2024-06-10 11:33:18.572 AM, error : uncaughtException: run is not defined
+ReferenceError: run is not defined
+    at file:///E:/LEARNING%20-%20EXPRESSJS/14-logging/src/index.js:17:1
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[LOGGER], 2024-06-10 11:34:03.292 AM, error : uncaughtException: run is not defined
+ReferenceError: run is not defined
+    at file:///E:/LEARNING%20-%20EXPRESSJS/14-logging/src/index.js:17:1
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[LOGGER], 2024-06-10 11:47:31.170 AM, error : uncaughtException: run is not defined
+ReferenceError: run is not defined
+    at file:///E:/LEARNING%20-%20EXPRESSJS/14-logging/src/index.js:17:1
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[LOGGER], 2024-06-10 12:46:44.061 PM, error : uncaughtException: run is not defined
+ReferenceError: run is not defined
+    at file:///E:/LEARNING%20-%20EXPRESSJS/14-logging/src/index.js:17:1
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[LOGGER], 2024-06-10 12:59:54.887 PM, error : uncaughtException: run is not defined
+ReferenceError: run is not defined
+    at file:///E:/LEARNING%20-%20EXPRESSJS/14-logging/src/index.js:17:1
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[LOGGER], 2024-06-10 01:02:55.073 PM, error : uncaughtException: run is not defined
+ReferenceError: run is not defined
+    at file:///E:/LEARNING%20-%20EXPRESSJS/14-logging/src/index.js:17:1
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[LOGGER], 2024-06-10 01:04:17.542 PM, error : uncaughtException: run is not defined
+ReferenceError: run is not defined
+    at file:///E:/LEARNING%20-%20EXPRESSJS/14-logging/src/index.js:17:1
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[LOGGER], 2024-06-10 01:16:40.996 PM, error : uncaughtException: run is not defined
+ReferenceError: run is not defined
+    at file:///E:/LEARNING%20-%20EXPRESSJS/14-logging/src/index.js:17:1
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[LOGGER], 2024-06-10 01:19:04.150 PM, error : uncaughtException: run is not defined
+ReferenceError: run is not defined
+    at file:///E:/LEARNING%20-%20EXPRESSJS/14-logging/src/index.js:17:1
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[LOGGER], 2024-06-10 01:19:15.231 PM, error : uncaughtException: run is not defined
+ReferenceError: run is not defined
+    at file:///E:/LEARNING%20-%20EXPRESSJS/14-logging/src/index.js:17:1
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[LOGGER], 2024-06-10 01:19:28.179 PM, error : uncaughtException: run is not defined
+ReferenceError: run is not defined
+    at file:///E:/LEARNING%20-%20EXPRESSJS/14-logging/src/index.js:17:1
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[LOGGER], 2024-06-10 01:19:40.352 PM, error : uncaughtException: run is not defined
+ReferenceError: run is not defined
+    at file:///E:/LEARNING%20-%20EXPRESSJS/14-logging/src/index.js:17:1
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[LOGGER], 2024-06-10 01:19:46.767 PM, error : uncaughtException: run is not defined
+ReferenceError: run is not defined
+    at file:///E:/LEARNING%20-%20EXPRESSJS/14-logging/src/index.js:17:1
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[LOGGER], 2024-06-10 01:20:06.956 PM, error : uncaughtException: run is not defined
+ReferenceError: run is not defined
+    at file:///E:/LEARNING%20-%20EXPRESSJS/14-logging/src/index.js:17:1
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[LOGGER], 2024-06-10 01:21:12.736 PM, error : uncaughtException: run is not defined
+ReferenceError: run is not defined
+    at file:///E:/LEARNING%20-%20EXPRESSJS/14-logging/src/index.js:17:1
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[LOGGER], 2024-06-10 01:22:18.843 PM, error : uncaughtException: app.use() requires a middleware function
+TypeError: app.use() requires a middleware function
+    at Function.use (E:\LEARNING - EXPRESSJS\14-logging\node_modules\express\lib\application.js:217:11)
+    at file:///E:/LEARNING%20-%20EXPRESSJS/14-logging/src/middleware/index.js:35:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[LOGGER], 2024-06-10 01:22:27.377 PM, error : uncaughtException: run is not defined
+ReferenceError: run is not defined
+    at file:///E:/LEARNING%20-%20EXPRESSJS/14-logging/src/index.js:17:1
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[LOGGER], 2024-06-10 01:30:15.322 PM, error : uncaughtException: run is not defined
+ReferenceError: run is not defined
+    at file:///E:/LEARNING%20-%20EXPRESSJS/14-logging_/src/index.js:17:1
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[LOGGER], 2024-06-11 12:12:10.827 PM, error : uncaughtException: run is not defined
+ReferenceError: run is not defined
+    at file:///E:/LEARNING%20-%20EXPRESSJS/14-logging_/src/index.js:17:1
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[LOGGER], 2024-06-13 12:05:59.197 PM, error : uncaughtException: run is not defined
+ReferenceError: run is not defined
+    at file:///E:/LEARNING%20-%20EXPRESSJS/14-logging_/src/index.js:17:1
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[LOGGER], 2024-06-13 12:06:16.121 PM, error : uncaughtException: run is not defined
+ReferenceError: run is not defined
+    at file:///E:/LEARNING%20-%20EXPRESSJS/14-logging_/src/index.js:17:1
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[LOGGER], 2024-06-13 12:09:18.217 PM, error : uncaughtException: run is not defined
+ReferenceError: run is not defined
+    at file:///E:/LEARNING%20-%20EXPRESSJS/14-logging_/src/index.js:17:1
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[LOGGER], 2024-06-13 12:09:38.131 PM, error : uncaughtException: run is not defined
+ReferenceError: run is not defined
+    at file:///E:/LEARNING%20-%20EXPRESSJS/14-logging_/src/index.js:17:1
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[LOGGER], 2024-06-13 12:10:25.038 PM, error : uncaughtException: run is not defined
+ReferenceError: run is not defined
+    at file:///E:/LEARNING%20-%20EXPRESSJS/14-logging_/src/index.js:17:1
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[LOGGER], 2024-06-13 12:10:41.452 PM, error : uncaughtException: run is not defined
+ReferenceError: run is not defined
+    at file:///E:/LEARNING%20-%20EXPRESSJS/14-logging_/src/index.js:17:1
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[LOGGER], 2024-06-13 12:11:40.924 PM, error : uncaughtException: run is not defined
+ReferenceError: run is not defined
+    at file:///E:/LEARNING%20-%20EXPRESSJS/14-logging_/src/index.js:17:1
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[LOGGER], 2024-06-13 12:11:42.997 PM, error : uncaughtException: run is not defined
+ReferenceError: run is not defined
+    at file:///E:/LEARNING%20-%20EXPRESSJS/14-logging_/src/index.js:17:1
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[LOGGER], 2024-06-13 12:17:33.511 PM, error : uncaughtException: run is not defined
+ReferenceError: run is not defined
+    at file:///E:/LEARNING%20-%20EXPRESSJS/14-logging_/src/index.js:17:1
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[LOGGER], 2024-06-13 12:17:38.247 PM, error : uncaughtException: run is not defined
+ReferenceError: run is not defined
+    at file:///E:/LEARNING%20-%20EXPRESSJS/14-logging_/src/index.js:17:1
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[LOGGER], 2024-06-13 12:17:55.280 PM, error : uncaughtException: run is not defined
+ReferenceError: run is not defined
+    at file:///E:/LEARNING%20-%20EXPRESSJS/14-logging_/src/index.js:17:1
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[LOGGER], 2024-06-13 12:17:58.065 PM, error : uncaughtException: run is not defined
+ReferenceError: run is not defined
+    at file:///E:/LEARNING%20-%20EXPRESSJS/14-logging_/src/index.js:17:1
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[LOGGER], 2024-06-13 12:22:29.185 PM, error : uncaughtException: run is not defined
+ReferenceError: run is not defined
+    at file:///E:/LEARNING%20-%20EXPRESSJS/14-logging_/src/index.js:17:1
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[LOGGER], 2024-06-13 12:22:46.169 PM, error : uncaughtException: run is not defined
+ReferenceError: run is not defined
+    at file:///E:/LEARNING%20-%20EXPRESSJS/14-logging_/src/index.js:17:1
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[LOGGER], 2024-06-13 12:25:15.744 PM, error : uncaughtException: run is not defined
+ReferenceError: run is not defined
+    at file:///E:/LEARNING%20-%20EXPRESSJS/14-logging_/src/index.js:17:1
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[LOGGER], 2024-06-13 12:26:03.536 PM, error : uncaughtException: run is not defined
+ReferenceError: run is not defined
+    at file:///E:/LEARNING%20-%20EXPRESSJS/14-logging_/src/index.js:17:1
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[LOGGER], 2024-06-13 12:26:08.622 PM, error : uncaughtException: run is not defined
+ReferenceError: run is not defined
+    at file:///E:/LEARNING%20-%20EXPRESSJS/14-logging_/src/index.js:17:1
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[LOGGER], 2024-06-13 12:30:25.964 PM, error : uncaughtException: run is not defined
+ReferenceError: run is not defined
+    at file:///E:/LEARNING%20-%20EXPRESSJS/14-logging_/src/index.js:17:1
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[LOGGER], 2024-06-13 12:30:36.582 PM, error : uncaughtException: run is not defined
+ReferenceError: run is not defined
+    at file:///E:/LEARNING%20-%20EXPRESSJS/14-logging_/src/index.js:17:1
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[LOGGER], 2024-06-13 12:31:15.915 PM, error : uncaughtException: run is not defined
+ReferenceError: run is not defined
+    at file:///E:/LEARNING%20-%20EXPRESSJS/14-logging_/src/index.js:17:1
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[LOGGER], 2024-06-13 12:31:21.250 PM, error : uncaughtException: run is not defined
+ReferenceError: run is not defined
+    at file:///E:/LEARNING%20-%20EXPRESSJS/14-logging_/src/index.js:17:1
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[LOGGER], 2024-06-13 12:31:49.860 PM, error : uncaughtException: run is not defined
+ReferenceError: run is not defined
+    at file:///E:/LEARNING%20-%20EXPRESSJS/14-logging_/src/index.js:17:1
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[LOGGER], 2024-06-13 12:32:17.204 PM, error : uncaughtException: run is not defined
+ReferenceError: run is not defined
+    at file:///E:/LEARNING%20-%20EXPRESSJS/14-logging_/src/index.js:17:1
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[LOGGER], 2024-06-13 12:33:03.720 PM, error : uncaughtException: run is not defined
+ReferenceError: run is not defined
+    at file:///E:/LEARNING%20-%20EXPRESSJS/14-logging_/src/index.js:17:1
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[LOGGER], 2024-06-13 12:34:58.382 PM, error : Ini adalah Error0
+[LOGGER], 2024-06-13 12:34:58.392 PM, error : Ini adalah Error1
+[LOGGER], 2024-06-13 12:34:58.760 PM, error : Ini adalah Error0
+[LOGGER], 2024-06-13 12:34:58.763 PM, error : Ini adalah Error1
+[LOGGER], 2024-06-13 12:35:05.447 PM, error : Ini adalah Error0
+[LOGGER], 2024-06-13 12:35:05.450 PM, error : Ini adalah Error1
+[LOGGER], 2024-06-13 12:35:05.688 PM, error : Ini adalah Error0
+[LOGGER], 2024-06-13 12:35:05.690 PM, error : Ini adalah Error1
+[LOGGER], 2024-06-13 12:35:05.906 PM, error : Ini adalah Error0
+[LOGGER], 2024-06-13 12:35:05.909 PM, error : Ini adalah Error1
+[LOGGER], 2024-06-13 12:35:06.545 PM, error : Ini adalah Error0
+[LOGGER], 2024-06-13 12:35:06.547 PM, error : Ini adalah Error1
+[LOGGER], 2024-06-13 12:35:14.754 PM, error : Ini adalah Error0
+[LOGGER], 2024-06-13 12:35:14.757 PM, error : Ini adalah Error1
+[LOGGER], 2024-06-13 12:35:14.847 PM, error : Ini adalah Error0
+[LOGGER], 2024-06-13 12:35:14.849 PM, error : Ini adalah Error1

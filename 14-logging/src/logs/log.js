@@ -1,12 +1,6 @@
 import logger from "./winston.js";
 
 const logProcess = (req, res, next) => {
-  // console.log({
-  //   method: req.method,
-  //   url: req.url,
-  //   path: req.path,
-  // });
-
   for (let i = 0; i < 2; i++) {
     logger.error("Ini adalah Error" + i);
     logger.warn("Ini adalah Warn" + i);

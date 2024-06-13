@@ -4,8 +4,8 @@ import "winston-mongodb";
 import TransportStream from "winston-transport";
 
 // keneksi ke database mongodb
-import mongodb, { MongoClient } from "mongodb";
-const mongoClient = mongodb.MongoClient;
+import mongodb from "mongodb";
+const MongoClient = mongodb.MongoClient;
 const url = "mongodb://127.0.0.1:27017/latihan";
 const client = new MongoClient(url);
 await client.connect();
@@ -15,7 +15,7 @@ class MyClass extends TransportStream {
     super(options);
   }
 
-  // custom disini sesuai kebutuhan email, WA, ....
+  // custom disini sesuai kebutuhan email, WA, dsb ....
   log(info, next) {
     console.log(`${new Date()} ${info.level} ${info.message}`);
     next();
