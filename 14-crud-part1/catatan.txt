@@ -1,0 +1,52 @@
+1. install npm express flash untuk menampilkan pesan kesalahan atau error yaitu install: "npm i express-flash"
+
+2. install mongoose digunakan untuk koneksi ke database mongodb yaitu install: "npm i mongoose"
+
+3. bcrypt digunakan untuk meng-ekripsi password kita agar tidak bisa dilihat secara langsung akan membuat password menjadi acak. install: "npm i bcrypt" 
+
+4. dotenv digunakan untuk menyimpan kredensial env kita dengan cara install: "npm i dotenv"
+
+5. validator digunakan untuk memeriksa input pengguna di aplikasi web. Validasi ini mencakup berbagai jenis pemeriksaan seperti validasi email, URL, angka, dan lainnya. npm i validator
+
+6. Winston digunakan untuk mencatat aktivitas aplikasi, error, dan informasi lainnya dengan cara yang fleksibel dan dapat dikonfigurasi. Winston memungkinkan pengembang untuk mengelola berbagai level log (seperti error, warn, info, dan debug), serta mengirim log ke berbagai tujuan seperti konsol, file, atau layanan logging eksternal. cara install yaitu: "npm i winston" 
+
+7. winston-daily-rotate-file adalah transportasi untuk Winston yang memungkinkan rotasi log harian, menyimpan log dalam file baru setiap hari untuk mempermudah pengelolaan, pengarsipan, dan pencarian log berdasarkan tanggal. cara install yaitu: "npm i winston-daily-rotate-file"
+
+8. winston-mongodb  memungkinkan penyimpanan log langsung ke MongoDB. Ini mempermudah integrasi logging antara Winston dan MongoDB, memungkinkan pengelolaan log aplikasi secara efisien dengan pencarian, pengarsipan, dan analisis yang lebih baik menggunakan kemampuan kueri MongoDB. cara install yaitu: "npm i winston-mongodb"
+
+9. mongobd dibutuhkan untuk driver ke winston-mongodb cara install yaitu: "npm i mongodb"
+
+# Agenda
+    - Pengenalan Logging
+    - Membuat Log sederhana dengan console
+    - Pengenalan winston
+    - Membuat winston console
+    - Membuat log file dengan winston
+    - Membuat winston-daily-rotate
+    - Membuat winston-mongodb
+
+# APA ITU LOGGING?
+    - Logging dalam programming adalah sebuah alat atau proses untuk mencatat aktivitas atau peristiwa yang terjadi di dalam program yang sedang berjalan.
+    - Looging berguna untuk memantau kinerja, mendiagnosis masalah, atau menyimpan infromasi penting yang berkaitan dengan program.
+    - Looging biasanya menghasilkan output berupa file teks atau JSON yang berisi infromasi sepertu waktu, level, pesan, nama file, nomor baris, atau data lainnya yang relevan
+
+# Apa itu Winston?
+    - Winston adalah sebuah packet npm untuk loging di platform node.js. 
+    - Winston adalah salah satu paket loging paling populer untuk Node.js yang menghasilkan output berupa file JSON yang mudah diproses layanan lain.
+    - Winston juga mendukung berbagai level loging, format loging, yaitu cara untuk menyimpan atau menampilkan loging, seperti console, file, http atau database.
+
+
+# "async": digunakan untuk mendefinisikan fungsi asynchronous dalam JavaScript. Fungsi asynchronous memungkinkan Anda untuk menulis kode yang melakukan operasi yang mungkin memakan waktu lama, seperti permintaan jaringan (network request), operasi file, atau panggilan ke database, tanpa menghalangi eksekusi kode lainnya.
+
+
+# secret: "secret key":
+    secret adalah string yang digunakan untuk menandatangani dan mengenkripsi ID sesi di cookie. Ini adalah kunci keamanan yang penting dan harus disimpan dengan aman.
+    "secret key" dalam contoh ini adalah placeholder; dalam aplikasi nyata, ini harus berupa string yang kompleks dan sulit ditebak.
+    resave: false:
+
+    resave menentukan apakah sesi harus disimpan kembali ke store sesi, bahkan jika sesi tidak dimodifikasi selama request.
+    Jika false, sesi hanya akan disimpan jika sesi tersebut telah dimodifikasi. Ini dapat mengurangi beban kerja pada store sesi.
+    saveUninitialized: false:
+
+    saveUninitialized menentukan apakah sesi yang baru, tetapi belum dimodifikasi, harus disimpan ke store sesi.
+    Jika false, sesi yang baru dibuat tidak akan disimpan sampai sesi tersebut benar-benar diubah. Ini berguna untuk mematuhi hukum privasi seperti GDPR yang mewajibkan persetujuan pengguna sebelum menyimpan data yang dapat diidentifikasi.
