@@ -13,7 +13,7 @@ import path from "path"; // Untuk mengelola path file dan direktori
 import url from "url"; // Untuk mengelola URL
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 
-import logProcess from "../logs/log.js";
+import "../logs/winston.js"; // langsung import winston.js
 
 appMiddleware.use(expressEjsLayouts); // Mengaktifkan layout EJS.
 appMiddleware.use(express.static(path.join(__dirname, "../../public"))); // Menyajikan file statis dari direktori public.
@@ -32,6 +32,5 @@ appMiddleware.use(
 );
 
 appMiddleware.use(flash()); // menggunakan route middleware nya
-appMiddleware.use(logProcess);
 
 export default appMiddleware;

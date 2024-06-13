@@ -7,6 +7,7 @@ import {
   useProtectedPage,
 } from "../src/controllers/register.js";
 import { getLogin, logout, postLogin } from "../src/controllers/login.js";
+import barangRouter from "./barang.js";
 const routes = express.Router(); // definisi routes express router
 
 // routes /
@@ -30,8 +31,11 @@ routes.post("/login", postLogin);
 // route get logout
 routes.get("/logout", logout);
 
-// Middleware untuk Menangani Kesalahan pada Rute /protected-page, jika pengguna belum login
-routes.use("/protected-page", useProtectedPage);
+// route untuk menampilkan halaman barang
+routes.use("/barang", barangRouter);
+
+// Middleware untuk Menangani Kesalahan pada semua route/all route, jika pengguna belum login
+routes.use("*", useProtectedPage);
 export default routes;
 
 /* CATATAN

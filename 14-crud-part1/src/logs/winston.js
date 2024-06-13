@@ -30,37 +30,13 @@ const logger = winston.createLogger({
 
   // menentukan tempat log yg akan disimpan
   transports: [
-    // new winston.transports.Console({
-    //   level: "silly",
-    //   format: winston.format.combine(winston.format.colorize({ all: true })),
-    // }),
-
-    // File transportasi menyimpan log ke file ./logs/app.log
-    new winston.transports.File({
-      handleExceptions: true, // jika ada kesalahan akan memunculkan pesan error
+    new winston.transports.Console({
       level: "silly",
-      filename: "./logs/app.log",
-    }),
-
-    // dan ./logs/app-error.log.
-    new winston.transports.File({
+      format: winston.format.combine(winston.format.colorize({ all: true })),
       handleExceptions: true,
-      level: "error",
-      filename: "./logs/app-error.log",
     }),
-    transportsDailyRotateFile, //  Menyimpan log harian yang berputar.
-    // new winston.transports.MongoDB({
-    //   level: "error",
-    //   db: await Promise.resolve(client),
-    //   collection: "logs",
-    //   capped: true,
-    // }),
 
-    // Transportasi kustom yang mencetak log ke console.
-    new MyClass({
-      level: "silly",
-      format: winston.format.combine(winston.format.colorize({ all: true })), // kombinasi data log yang masuk dengan menambahkan warna
-    }),
+    transportsDailyRotateFile, //  Menyimpan log harian yang berputar.
   ],
 });
 
