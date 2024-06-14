@@ -1,26 +1,15 @@
-<!-- validasi, apakah variabel message ada dan memiliki panjang lebih dari 0?
-
-- message: Variabel ini diambil dari req.flash("message") dan akan berisi array dengan informasi pesan.
-- message.length > 0: Memastikan bahwa array message tidak kosong.
--->
-<% if ( message.length > 0) { %>
+<% if(message.length > 0){ %>
 <script>
-  /* jika ada maka tampilkan pesannya yaitu:
-         message[0]: menampilkan icon popup itu adalah success atau error, disini saya menggunakan popup "error"
-         message[1]: menampilkan judul pesan = "Error !"
-         message[2]: menampilkan teks pesan = "Data tidak boleh kosong"
-    */
   Swal.fire({
     title: "<%= message[1] %>",
     text: "<%= message[2] %>",
     icon: "<%= message[0] %>",
   });
 </script>
-<% } let nama = ""; let email = ""; let password = ""; if(data) { nama =
-data.nama; email = data.email; password = data.password; } %>
-
-<div class="container center">
-  <div class="content">
+<% } let nama=""; let email=""; let password=""; if(data){ nama=data.nama;
+email=data.email; password=data.password; } %>
+<div class="row center">
+  <div class="container vcenter col-50">
     <h2 class="header">Register User</h2>
     <form action="/signup" method="post">
       <div class="row">
@@ -28,7 +17,7 @@ data.nama; email = data.email; password = data.password; } %>
           <label for="nama">Nama Pengguna</label>
         </div>
         <div class="col-75">
-          <input type="text" id="nama" name="nama" value="<%= nama%>" />
+          <input type="text" id="nama" name="nama" value="<%= nama %>" />
         </div>
       </div>
       <div class="row">
@@ -36,7 +25,7 @@ data.nama; email = data.email; password = data.password; } %>
           <label for="email">Email</label>
         </div>
         <div class="col-75">
-          <input type="email" id="email" name="email" value="<%= email%>" />
+          <input type="email" id="email" name="email" value="<%= email %>" />
         </div>
       </div>
       <div class="row">
@@ -53,18 +42,12 @@ data.nama; email = data.email; password = data.password; } %>
         </div>
       </div>
       <div class="row">
-        <div class="col-25"></div>
+        <div class="col-25">&nbsp;</div>
         <div class="col-75">
           <button type="submit" class="btn primary">Register</button>
         </div>
       </div>
     </form>
-    <div class="row">
-      <div class="col-25"></div>
-      <div class="col-75">
-        <a href="/login" class="btn secondary">Login</a>
-      </div>
-    </div>
+    <a href="/login">login</a>
   </div>
 </div>
-<!-- menit 9  -->
