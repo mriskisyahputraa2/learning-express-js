@@ -81,7 +81,7 @@ const getProtectedPage = (req, res, next) => {
   // data object informasi untuk views protected-page
   const data = {
     title: "Protected Page",
-    layout: "layout/main-layout",
+    layout: "layout/main",
     message: "Welcome " + req.session.user.nama,
   };
 

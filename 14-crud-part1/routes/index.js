@@ -12,7 +12,7 @@ const routes = express.Router(); // definisi routes express router
 
 // routes /
 routes.get("/", (req, res) => {
-  res.send("Hello brayy");
+  res.redirect("/protected-page");
 });
 
 // route signup semua
@@ -20,7 +20,7 @@ routes.get("/", (req, res) => {
 routes.get("/signup", getSignup);
 // routes mendapatkan validasi signup menggunakan async: untuk menyimpan data pengguna ke database
 routes.post("/signup", postSignup);
-// mengatur route get, untuk protected-page dengan middleware issLoggedIn sebagai middleware pertama
+// mengatur route get, untuk protected-page dengan middleware issLoggedIn sebagai middleware pertama (jadi jika pengguna mau kehalaman utama harus melewati login dulu)
 routes.get("/protected-page", issLoggedIn, getProtectedPage);
 
 // route login & logout semua
@@ -31,8 +31,8 @@ routes.post("/login", postLogin);
 // route get logout
 routes.get("/logout", logout);
 
-// route untuk menampilkan halaman barang
-routes.use("/barang", barangRouter);
+// route untuk menampilkan halaman barang, (ketika pengguna mau kehalaman barang harus melewati validasi login dulu)
+routes.use("/barang", issLoggedIn, barangRouter);
 
 // Middleware untuk Menangani Kesalahan pada semua route/all route, jika pengguna belum login
 routes.use("*", useProtectedPage);
