@@ -10,7 +10,6 @@ import { getLogin, logout, postLogin } from "../src/controllers/login.js";
 import barangRouter from "./barang.js";
 const routes = express.Router(); // definisi routes express router
 
-// routes /
 routes.get("/", (req, res) => {
   res.redirect("/protected-page");
 });

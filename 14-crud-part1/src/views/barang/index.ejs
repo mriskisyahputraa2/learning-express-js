@@ -35,7 +35,7 @@
         </tr>
       </thead>
       <tbody>
-        <!-- Looping melalui array data (ini didapatkan dari controller barang) untuk setiap baris barang. -->
+        <!-- Looping melalui array "data" (ini didapatkan dari controller barang) untuk setiap baris barang. -->
         <% data.forEach((row, no) => {no++ %>
         <tr>
           <td><%= no %></td>
@@ -43,10 +43,12 @@
           <td><%= row.jumlah %></td>
           <td><%= row.harga_satuan %></td>
           <td>
+            <!-- ini adalah cara membuat data yang expire_date -->
             <%= row.expire_date ? new
             Date(row.expire_date).toISOString().slice(0, 10) : '' %>
           </td>
           <td>
+            <!-- a href ini untuk link ketika ingin edit barang -->
             <a href="/barang/<%= row._id.toString() %>"
               ><i class="fa-solid fa-pen-to-square"></i> Edit</a
             >
@@ -57,4 +59,3 @@
     </table>
   </div>
 </div>
-<!-- menit 22 -->
