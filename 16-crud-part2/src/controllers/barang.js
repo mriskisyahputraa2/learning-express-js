@@ -1,4 +1,5 @@
 import barangCollection from "../models/barang.js";
+import barangValid from "../validation/barang.js";
 
 // function gettAllBarang, untuk mengambil semua barang dan menampilkannya di layar
 const getAllBarang = async (req, res, next) => {
@@ -40,38 +41,37 @@ const insertBarang = async (req, res, next) => {
 // function setNewBarang, untuk menambahkan/add data ke dalam database barang
 const setNewBarang = async (req, res, next) => {
   try {
-    // mempersiapkan data barang baru yang diinputkan oleh pengguna
-    const data = {
-      nama_barang: req.body.nama_barang,
-      jumlah: req.body.jumlah,
-      harga_satuan: req.body.harga_satuan,
-      expire_date: req.body.kaduluarsa,
-    };
+    const out = barangValid(req.body);
 
-    // data yang sudah dimasukkan sesauai dengan collectionya, akan disimpan didalam database barang
-    const hasil = await barangCollection.insertMany([data]);
-
-    // validasi, jika datanya berhasil
-    if (hasil) {
-      // maka tampilkan pesan berhasil
-      req.flash("message", [
-        "success",
-        "Berhasil",
-        "Berhasil menambahkan barang baru!",
-      ]);
-      res.redirect("/barang");
-
-      // jika tidak,
+    if (out.message.length > 0) {
+      req.flash("message", ["error", "Gagal", out.message[0]]);
+      req.flash("data", out.data);
+      req.redirect("/barang/insert");
     } else {
-      // maka tampilkan pesan gagal
-      req.flash("message", [
-        "error",
-        "Gagal",
-        "Gagal menambahkan barang baru!",
-      ]);
-      res.redirect("/barang");
-    }
+      // data yang sudah dimasukkan sesauai dengan collectionya, akan disimpan didalam database barang
+      const hasil = await barangCollection.insertMany([out.data]);
 
+      // validasi, jika datanya berhasil
+      if (hasil) {
+        // maka tampilkan pesan berhasil
+        req.flash("message", [
+          "success",
+          "Berhasil",
+          "Berhasil menambahkan barang baru!",
+        ]);
+        res.redirect("/barang");
+
+        // jika tidak,
+      } else {
+        // maka tampilkan pesan gagal
+        req.flash("message", [
+          "error",
+          "Gagal",
+          "Gagal menambahkan barang baru!",
+        ]);
+        res.redirect("/barang");
+      }
+    }
     // jika data yang dimasukkan tidak sesuai maka munculkan error
   } catch (err) {
     next(err);
