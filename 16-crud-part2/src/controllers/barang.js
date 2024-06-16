@@ -1,5 +1,7 @@
 import barangCollection from "../models/barang.js";
 import barangValid from "../validation/barang.js";
+import mongoose from "mongoose";
+const ObjectId = mongoose.Types.ObjectId;
 
 // function gettAllBarang, untuk mengambil semua barang dan menampilkannya di layar
 const getAllBarang = async (req, res, next) => {
@@ -78,4 +80,74 @@ const setNewBarang = async (req, res, next) => {
   }
 };
 
-export { getAllBarang, insertBarang, setNewBarang };
+// function editBarang
+const editBarang = async (req, res, next) => {
+  try {
+    const { id } = req.params.id;
+    const barang = await barangCollection.find({ id: new ObjectId(id) });
+    const editData = req.flash("data")[0];
+    if (editData) {
+      const data = {
+        title: "Edit Barang",
+        layout: "layout/main",
+        message: req.flash("message"),
+        data: barang,
+      };
+      res.render("barang/edit");
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+const setEditBarang = async (req, res, next) => {
+  try {
+    const { id, mode } = req.body;
+    const out = barangValid(req.body);
+    const outError = [{ _id: new ObjectId(id), ...out.data }];
+
+    if (out.message.length > 0) {
+      req.flash("message", ["error", "Gagal", out.message[0]]);
+      req.flash("data", outError);
+      req.redirect(`/barang/${id}`);
+    } else {
+      if (mode == "update") {
+        const hasil = await barangCollection.updateOne(
+          { _id: new ObjectId(id) },
+          { $set: out.data }
+        );
+        if (hasil) {
+          req.flash("message", [
+            "success",
+            "Berhasil",
+            "Berhasil mengubah barang",
+          ]);
+          req.redirect("/barang");
+        } else {
+          req.flash("message", ["error", "Gagal", "Gagal mengubah barang"]);
+          req.redirect(`/barang/${id}`);
+        }
+      } else {
+        const hasil = await barangCollection.deleteOne(
+          { _id: new ObjectId(id) },
+          { $set: out.data }
+        );
+        if (hasil) {
+          req.flash("message", [
+            "success",
+            "Berhasil",
+            "Berhasil menghapus barang",
+          ]);
+          req.redirect("/barang");
+        } else {
+          req.flash("message", ["error", "Gagal", "Gagal menghapus barang"]);
+          req.redirect(`/barang/${id}`);
+        }
+      }
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+export { getAllBarang, insertBarang, setNewBarang, editBarang, setEditBarang };

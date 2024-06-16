@@ -1,7 +1,10 @@
-import validator from "validator";
+import validator from "validator"; // import validator untuk validasi barang
 
+// function sanitization, untuk membersihkan
 const sanitization = (data) => {
   return {
+    // escape: untuk mengubah karakter khusus seperti <, >, &, dll. menjadi lebih aman agar terhindar dari (Cross-Site Scripting)
+    // trim:  Menghapus spasi di awal dan akhir string untuk setiap atribut
     nama_barang: validator.escape(validator.trim(data.nama_barang)),
     jumlah: validator.escape(validator.trim(data.jumlah)),
     harga_satuan: validator.escape(validator.trim(data.harga_satuan)),
@@ -9,9 +12,12 @@ const sanitization = (data) => {
   };
 };
 
+// function validasi barang, (dt berisi data barang)
 const barangValid = (dt) => {
-  const message = [];
-  let data = sanitization(dt);
+  const message = []; // array kosong tempat menampung pesan kesalahan
+  let data = sanitization(dt); // Memanggil fungsi sanitization untuk membersihkan data yang diterima.
+
+  // validasi message kesalahan
   if (validator.isEmpty(data.nama_barang)) {
     message.push("Nama barang tidak boleh kosong");
   }
@@ -22,6 +28,7 @@ const barangValid = (dt) => {
     message.push("Harga satuan tidak boleh kosong");
   }
 
+  // mengembalikan message kesalahan dan data yg diinputkan oleh pengguna
   return { message, data };
 };
 

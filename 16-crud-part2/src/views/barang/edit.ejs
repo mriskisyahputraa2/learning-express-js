@@ -12,8 +12,11 @@ harga_satuan = data.harga_satuan; expire_date = data.expire_date; } %>
 
 <div class="row">
   <div class="container col-75">
-    <h2 class="header">Input Barang</h2>
-    <form action="/barang" method="post">
+    <h2 class="header">Edit Barang</h2>
+    <form action="/barang/<%= data._id%>" method="post">
+      <input type="hidden" name="id" value="<%= data._id%>" />
+      <input type="hidden" name="mode" id="mode" value="Update" />
+
       <div class="row">
         <div class="col-25">
           <label for="nama_barang">Nama Barang</label>
@@ -61,8 +64,11 @@ harga_satuan = data.harga_satuan; expire_date = data.expire_date; } %>
       <div class="row">
         <div class="col-25">&nbsp;</div>
         <div class="col-75">
-          <button type="submit" class="btn primary">
-            <i class="fa-solid fa-floppy-disk"></i> Simpan
+          <button onclick="edit('update')" type="button" class="btn primary">
+            <i class="fa-solid fa-pen-to-square"></i>Edit
+          </button>
+          <button onclick="edit('delete')" type="button" class="btn danger">
+            <i class="fa-solid fa-trash"></i>Delete
           </button>
         </div>
       </div>

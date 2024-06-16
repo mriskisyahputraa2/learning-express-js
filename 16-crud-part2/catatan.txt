@@ -7,6 +7,9 @@
 4. dotenv digunakan untuk menyimpan kredensial env kita dengan cara install: "npm i dotenv"
 
 5. validator digunakan untuk memeriksa input pengguna di aplikasi web. Validasi ini mencakup berbagai jenis pemeriksaan seperti validasi email, URL, angka, dan lainnya. npm i validator
+    # validator.trim(): Menghapus spasi di awal dan akhir string untuk setiap atribut.
+    # validator.escape(): Mengubah karakter khusus seperti <, >, &, ', dan " menjadi representasi aman, misalnya &lt; untuk <. Ini untuk menghindari injeksi kode atau XSS (Cross-Site Scripting).
+
 
 6. Winston digunakan untuk mencatat aktivitas aplikasi, error, dan informasi lainnya dengan cara yang fleksibel dan dapat dikonfigurasi. Winston memungkinkan pengembang untuk mengelola berbagai level log (seperti error, warn, info, dan debug), serta mengirim log ke berbagai tujuan seperti konsol, file, atau layanan logging eksternal. cara install yaitu: "npm i winston" 
 
