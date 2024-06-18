@@ -14,7 +14,7 @@ const sanitization = (data) => {
 
 // function validasi barang, (dt berisi data barang)
 const barangValid = (dt) => {
-  const message = []; // array kosong tempat menampung pesan kesalahan
+  let message = []; // array kosong tempat menampung pesan kesalahan
   let data = sanitization(dt); // Memanggil fungsi sanitization untuk membersihkan data yang diterima.
 
   // validasi message kesalahan
