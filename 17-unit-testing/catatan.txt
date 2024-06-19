@@ -1,2 +1,47 @@
 # UNIT TESTING 
     adalah proses pengujian perangkat lunak yang dilakukan untuk memeriksa apakah unit-unit terkecil dalam perangkat lunak(seperti fungsi, modul, atau komponen) bekerja dengan benar
+
+# Jest 
+    adalah framework pengujian JavaScript yang dikembangkan oleh Facebook, cocok untuk aplikasi React dan lainnya. Fitur utamanya meliputi:
+       - Kemudahan Penggunaan: Sedikit konfigurasi diperlukan.
+       - Snapshot Testing: Menguji perubahan UI.
+       - Kecepatan dan Efisiensi: Menjalankan tes paralel dan fitur watch mode.
+       - Coverage Reporting: Laporan cakupan kode bawaan.
+       - Mocking: Mudah membuat mock fungsi dan modul.
+       - Integrasi: Bekerja dengan Babel, Webpack, dan Enzyme.
+       - Jest membantu menulis, mengelola, dan menjalankan pengujian otomatis, memastikan kode berkualitas tinggi dan bebas bug.
+
+    Jika digunakan hanya untuk proses development, Jest memberikan manfaat berikut:
+       - Deteksi Bug Dini: Menemukan bug lebih awal.
+       - Efisiensi Pengembangan: Fitur watch mode mempercepat debugging.
+       - Kepercayaan Diri: Memungkinkan refaktor dan penambahan fitur dengan aman.
+       - Dokumentasi Hidup: Tes sebagai dokumentasi perilaku kode.
+       - Mocking dan Isolasi: Mempermudah pengujian unit kode secara terisolasi.
+       - Snapshot Testing: Menjaga integritas UI.
+       - Menggunakan Jest meningkatkan kualitas kode, mempercepat siklus pengembangan, dan mencegah bug baru.
+
+       cara install: 'npm install --save-dev jest'
+
+# BABEL
+    - adalah alat untuk mengonversi kode JavaScript dari versi terbaru (seperti ES6/ES2015 dan seterusnya) ke versi yang lebih lama agar dapat dijalankan di browser atau lingkungan JavaScript yang tidak mendukung fitur-fitur baru tersebut. Ini disebut transpilasi, memungkinkan pengembang untuk menulis kode dengan fitur terbaru tanpa khawatir tentang kompatibilitas lintas browser atau lingkungan pengembangan.
+    - Babel adalah sebuah toolchain yang terutama digunakan untuk mengonversi kode ECMAScript 2015+ menjadi versi JavaScript yang kompatibel dengan versi JavaScript yang ada di peramban atau lingkungan yang ada saat ini dan yang lebih lama. 
+
+    1. install babel "npm install --save-dev babel-jest"
+    2. copy dan masukkan ini file package.json: 
+    "{
+        "scripts": {
+            "test": "jest"
+        },
+        "jest": {
+            "transform": {
+            "^.+\\.[t|j]sx?$": "babel-jest"
+            }
+        }
+    }"
+
+    3. buat file "babel.config.json"
+    4. install "npm install @babel/preset-env --save-dev"
+    5. copy ini dan masukkan ke file "babel.config.json": 
+    "{
+        "presets": ["@babel/preset-env"]
+    }"
